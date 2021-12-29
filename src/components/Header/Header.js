@@ -32,9 +32,9 @@ const Header = () => {
         </Nav>
         <Side>
           <MobileAccess>
-            <SearchIcon id="search" />
-            <ShopIcon id="shopping-bag" />
-            <MenuIcon id="menu" />
+            <Btn><SearchIcon id="search" /></Btn>
+            <Btn><ShopIcon id="shopping-bag" /></Btn>
+            <Btn onClick={() => setShowMobileMenu(true)}><MenuIcon id="menu" /></Btn>
           </MobileAccess>
         </Side>
       </MainHeader>
@@ -98,5 +98,10 @@ const MobileAccess = styled.div`
 const MenuIcon = styled(Icon)``;
 const SearchIcon = styled(Icon)``;
 const ShopIcon = styled(Icon)``;
+
+const Btn = styled.button`
+  background-color: transparent;
+  border: 0;
+`;
 
 export default Header;
