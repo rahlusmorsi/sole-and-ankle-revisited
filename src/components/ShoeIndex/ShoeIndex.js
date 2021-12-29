@@ -82,7 +82,7 @@ const Header = styled.header`
 
 const Title = styled.h2`
   font-size: 1.5rem;
-  font-weight: ${WEIGHTS.medium};
+  font-weight: var(--weight-medium);
 `;
 
 const MobileViewOnly = styled.div`

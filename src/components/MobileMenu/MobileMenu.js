@@ -33,7 +33,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
 };
 
 const Overlay = styled(DialogOverlay)`
-  background: hsla(220, 5%, 40%, 0.8);
+  background: linear-gradient(var(--color-primary), var(--color-secondary));
   position: fixed;
   top: 0;
   right: 0;
@@ -42,7 +42,7 @@ const Overlay = styled(DialogOverlay)`
 `;
 
 const Content = styled(DialogContent)`
-  background: white;
+  background: var(--color-white);
   position: fixed;
   top: 0;
   right: 0;
@@ -66,13 +66,13 @@ const Nav = styled.nav`
   flex-direction: column;
 
   & a {
-    color: ${COLORS.gray[900]};
-    font-weight: ${WEIGHTS.medium};
+    color: var(--color-gray-900);
+    font-weight: var(--weight-medium);
     text-decoration: none;
     text-transform: uppercase;
   
     &[href="/sale"] {
-      color: ${COLORS.secondary};
+      color: var(--color-secondary);
     }
   }
 `;
@@ -82,8 +82,8 @@ const Footer = styled.footer`
   flex-direction: column;
 
   & a {
-    color: ${COLORS.gray[700]};
-    font-weight: ${WEIGHTS.normal};
+    color: var(--color-gray-700);
+    font-weight: var(--weight-bold);
     text-decoration: none;
   }
 `;
