@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS, WEIGHTS } from '../../constants';
+import { COLORS, SIZES, WEIGHTS } from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
+import Icon from '../Icon';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -29,7 +30,13 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
-        <Side />
+        <Side>
+          <MobileAccess>
+            <SearchIcon id="search" />
+            <ShopIcon id="shopping-bag" />
+            <MenuIcon id="menu" />
+          </MobileAccess>
+        </Side>
       </MainHeader>
 
       <MobileMenu
@@ -52,6 +59,10 @@ const Nav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
+
+  @media(${SIZES.tablet}) {
+    display: none;
+  }
 `;
 
 const Side = styled.div`
@@ -69,5 +80,23 @@ const NavLink = styled.a`
     color: ${COLORS.secondary};
   }
 `;
+
+const MobileAccess = styled.div`
+  display: none;
+
+  @media(${SIZES.tablet}) {
+    display: flex;
+    justify-content: flex-end;
+    gap: 44px;
+  }
+
+    @media(${SIZES.phone}) {
+    gap: 22px;
+  }
+`;
+
+const MenuIcon = styled(Icon)``;
+const SearchIcon = styled(Icon)``;
+const ShopIcon = styled(Icon)``;
 
 export default Header;
