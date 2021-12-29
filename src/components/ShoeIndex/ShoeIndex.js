@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { WEIGHTS } from '../../constants';
+import { SIZES, WEIGHTS } from '../../constants';
 
 import Breadcrumbs from '../Breadcrumbs';
 import Select from '../Select';
@@ -14,31 +14,44 @@ const ShoeIndex = ({ sortId, setSortId }) => {
     <Wrapper>
       <MainColumn>
         <Header>
-          <Title>Running</Title>
-          <Select
-            label="Sort"
-            value={sortId}
-            onChange={(ev) => setSortId(ev.target.value)}
-          >
-            <option value="newest">Newest Releases</option>
-            <option value="price">Price</option>
-          </Select>
+          <div>
+            <MobileViewOnly>
+              <ShoeBreadcrumbs />
+            </MobileViewOnly>
+            <Title>Running</Title>
+          </div>
+          <PhoneHideOnly>
+            <Select
+              label="Sort"
+              value={sortId}
+              onChange={(ev) => setSortId(ev.target.value)}
+            >
+              <option value="newest">Newest Releases</option>
+              <option value="price">Price</option>
+            </Select>
+          </PhoneHideOnly>
         </Header>
         <Spacer size={32} />
         <ShoeGrid />
       </MainColumn>
       <LeftColumn>
-        <Breadcrumbs>
-          <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
-          <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
-          <Breadcrumbs.Crumb href="/sale/shoes">
-            Shoes
-          </Breadcrumbs.Crumb>
-        </Breadcrumbs>
+        <ShoeBreadcrumbs />
         <Spacer size={42} />
         <ShoeSidebar />
       </LeftColumn>
     </Wrapper>
+  );
+};
+
+const ShoeBreadcrumbs = () => {
+  return (
+    <Breadcrumbs>
+      <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
+      <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
+      <Breadcrumbs.Crumb href="/sale/shoes">
+        Shoes
+      </Breadcrumbs.Crumb>
+    </Breadcrumbs >
   );
 };
 
@@ -51,6 +64,10 @@ const Wrapper = styled.div`
 
 const LeftColumn = styled.div`
   flex-basis: 248px;
+
+  @media(${SIZES.tablet}) {
+    display: none;
+  }
 `;
 
 const MainColumn = styled.div`
@@ -66,6 +83,20 @@ const Header = styled.header`
 const Title = styled.h2`
   font-size: 1.5rem;
   font-weight: ${WEIGHTS.medium};
+`;
+
+const MobileViewOnly = styled.div`
+  display: none;
+
+  @media(${SIZES.tablet}) {
+    display: revert;
+  }
+`;
+
+const PhoneHideOnly = styled.div`
+  @media(${SIZES.phone}) {
+    display: none;
+  }
 `;
 
 export default ShoeIndex;
