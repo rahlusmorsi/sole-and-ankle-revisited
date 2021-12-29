@@ -23,11 +23,11 @@ const Header = () => {
           <Logo />
         </Side>
         <Nav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
+          <NavLink href="/sale">A Vendre</NavLink>
+          <NavLink href="/new">Nouvelles&nbsp;Versions</NavLink>
+          <NavLink href="/men">Hommes</NavLink>
+          <NavLink href="/women">Femmes</NavLink>
+          <NavLink href="/kids">Les Enfants</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
         <Side>
@@ -53,15 +53,24 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+  overflow-x: auto;
 `;
 
 const Nav = styled.nav`
   display: flex;
-  gap: 48px;
+  gap: clamp(
+    1rem,
+    10.2vw - 6.25rem,
+    3rem
+  );
   margin: 0px 48px;
 
   @media(${SIZES.tablet}) {
     display: none;
+  }
+
+  & a {
+    white-space: nowrap;
   }
 `;
 
